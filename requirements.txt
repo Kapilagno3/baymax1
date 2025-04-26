@@ -1,7 +1,7 @@
 python-dotenv
 langchain
 langchain_community
-PyMuPDF
+pymupdf
 langchain_huggingface
 faiss-cpu
 sentence-transformers
