@@ -1,5 +1,6 @@
 
 import os
+import streamlit as st
 from langchain_huggingface import HuggingFaceEndpoint
 from langchain_core.prompts import PromptTemplate
 from langchain.chains import RetrievalQA
@@ -12,6 +13,7 @@ load_dotenv(find_dotenv())
 
 # Step 1: Setup LLM (Mistral with HuggingFace)
 HF_TOKEN = os.environ.get("HF_TOKEN")
+HF_TOKEN = st.secrets["HF_TOKEN"]
 HUGGINGFACE_REPO_ID = "mistralai/Mistral-7B-Instruct-v0.3"
 
 def load_llm(huggingface_repo_id):
