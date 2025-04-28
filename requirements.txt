@@ -5,6 +5,6 @@ pymupdf
 langchain_huggingface
 faiss-cpu
 sentence-transformers
-pyttsx3
+pyttsx3==2.90
 speechrecognition
-espeak
+# espeak
