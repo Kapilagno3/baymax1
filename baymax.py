@@ -90,7 +90,7 @@ def voice_input():
 
 def text_to_speech(text):
         """Convert text to speech and read it out loud."""
-        engine = pyttsx3.init(driverName='sapi5')
+        engine = pyttsx3.init()
         engine.say(text)
         engine.runAndWait()
 

@@ -1,10 +1,23 @@
-python-dotenv
-langchain
-langchain_community
+# python-dotenv
+# langchain
+# langchain_community
+# pymupdf
+# langchain_huggingface
+# faiss-cpu
+# sentence-transformers
+# pyttsx3==2.90
+# speechrecognition
+# comtypes
+streamlit
 pymupdf
-langchain_huggingface
+langchain
+langchain-core
+langchain-huggingface
+langchain-community
+huggingface_hub
 faiss-cpu
 sentence-transformers
-pyttsx3==2.90
+pyttsx3
 speechrecognition
 comtypes
+pyaudio
