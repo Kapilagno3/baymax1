@@ -6,3 +6,4 @@ langchain_huggingface
 faiss-cpu
 sentence-transformers
 pyttsx3
+speechrecognition
