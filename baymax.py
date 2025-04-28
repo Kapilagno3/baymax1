@@ -90,13 +90,13 @@ def voice_input():
 
 def text_to_speech(text):
         """Convert text to speech and read it out loud."""
-        engine = pyttsx3.init()
+        engine = pyttsx3.init(driverName='sapi5')
         engine.say(text)
         engine.runAndWait()
 
     # Conversation Mode Feature
 if st.button("Enable Conversation Mode"):
-        text_to_speech("I am Baymax")
+        text_to_speech("I am Baymax!")
         text_to_speech("your personal healtcare assistant")
         text_to_speech("how may i assist you today")
         st.info("Conversation mode enabled. Speak your query.")
