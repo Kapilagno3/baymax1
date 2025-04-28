@@ -20,4 +20,3 @@ sentence-transformers
 pyttsx3
 speechrecognition
 comtypes
-pyaudio
