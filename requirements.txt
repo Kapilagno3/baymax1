@@ -20,5 +20,5 @@ sentence-transformers
 pyttsx3
 speechrecognition
 comtypes
-platform
+# platform
 espeak-ng
