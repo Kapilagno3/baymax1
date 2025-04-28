@@ -7,7 +7,6 @@ from langchain.chains import RetrievalQA
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 
-## Uncomment the following files if you're not using pipenv as your virtual environment manager
 from dotenv import load_dotenv, find_dotenv
 load_dotenv(find_dotenv())
 
@@ -17,10 +16,9 @@ HF_TOKEN = st.secrets["HF_TOKEN"]
 HUGGINGFACE_REPO_ID = "mistralai/Mistral-7B-Instruct-v0.3"
 
 def load_llm(huggingface_repo_id):
-    # Specify the correct task ("text-generation") in HuggingFaceEndpoint
     llm = HuggingFaceEndpoint(
         repo_id=huggingface_repo_id,
-        task="text-generation",  # Fixed issue with 'unknown' task
+        task="text-generation",
         temperature=0.5,
         model_kwargs={"token":HF_TOKEN,
             "max_length": 512}

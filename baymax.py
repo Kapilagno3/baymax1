@@ -1,12 +1,14 @@
 
 import streamlit as st
-import fitz  # PyMuPDF for PDF text extraction
+import fitz  
 import os
 from langchain_core.prompts import PromptTemplate
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.chains import RetrievalQA
 from langchain_huggingface import HuggingFaceEndpoint
 from langchain_community.vectorstores import FAISS
+import speech_recognition as sr
+import pyttsx3
 
 
 DB_FAISS_PATH="vectorstore/db_faiss"
@@ -68,6 +70,48 @@ def analyze_medical_report(report_text, vectorstore, hf_token):
 
     # return response["result"]
     return result_to_show
+def voice_input():
+        """Capture voice input from the user and convert it to text."""
+        recognizer = sr.Recognizer()
+        with sr.Microphone() as source:
+            st.info("Listening... Please speak your query.")
+            try:
+                audio = recognizer.listen(source, timeout=10)
+                query = recognizer.recognize_google(audio)
+                st.success(f"You said: {query}")
+                return query
+            except sr.UnknownValueError:
+                st.error("Sorry, I could not understand the audio.")
+            except sr.RequestError as e:
+                st.error(f"Could not request results; {e}")
+            except sr.WaitTimeoutError:
+                st.error("Listening timed out. Please try again.")
+        return None
+
+def text_to_speech(text):
+        """Convert text to speech and read it out loud."""
+        engine = pyttsx3.init()
+        engine.say(text)
+        engine.runAndWait()
+
+    # Conversation Mode Feature
+if st.button("Enable Conversation Mode"):
+        text_to_speech("I am Baymax")
+        text_to_speech("your personal healtcare assistant")
+        text_to_speech("how may i assist you today")
+        st.info("Conversation mode enabled. Speak your query.")
+        voice_query = voice_input()
+        if voice_query:
+            HF_TOKEN = os.environ.get("HF_TOKEN")
+            HF_TOKEN = st.secrets["HF_TOKEN"]
+            vectorstore = get_vectorstore()
+
+            if vectorstore is None:
+                st.error("Failed to load vector database")
+            else:
+                analysis_result = analyze_medical_report(voice_query, vectorstore, HF_TOKEN)
+                st.markdown(f"### Analysis Result:\n{analysis_result}")
+                text_to_speech(analysis_result)
 
 def main():
     st.title("Hi I am Baymax!")
