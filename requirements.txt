@@ -21,3 +21,4 @@ pyttsx3
 speechrecognition
 comtypes
 platform
+espeak-ng
