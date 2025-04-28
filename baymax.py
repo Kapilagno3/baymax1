@@ -88,11 +88,22 @@ def voice_input():
                 st.error("Listening timed out. Please try again.")
         return None
 
+# def text_to_speech(text):
+#         """Convert text to speech and read it out loud."""
+#         engine = pyttsx3.init()
+#         engine.say(text)
+#         engine.runAndWait()
+import platform
 def text_to_speech(text):
-        """Convert text to speech and read it out loud."""
-        engine = pyttsx3.init()
-        engine.say(text)
-        engine.runAndWait()
+    """Convert text to speech and read it out loud."""
+    engine = None
+    if platform.system() == "Windows":
+        engine = pyttsx3.init(driverName='sapi5')
+    else:
+        engine = pyttsx3.init(driverName='espeak')
+    
+    engine.say(text)
+    engine.runAndWait()
 
     # Conversation Mode Feature
 if st.button("Enable Conversation Mode"):
