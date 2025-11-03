@@ -103,7 +103,7 @@ if st.button("Enable Conversation Mode"):
         voice_query = voice_input()
         if voice_query:
             HF_TOKEN = os.environ.get("HF_TOKEN")
-            HF_TOKEN = st.secrets["HF_TOKEN"]
+            # HF_TOKEN = st.secrets["HF_TOKEN"]
             vectorstore = get_vectorstore()
 
             if vectorstore is None:
@@ -134,7 +134,7 @@ def main():
         st.text_area("Extracted Report Text:", extracted_text[:1000])  # Preview first 1000 chars
 
         HF_TOKEN = os.environ.get("HF_TOKEN")
-        HF_TOKEN = st.secrets["HF_TOKEN"]
+        # HF_TOKEN = st.secrets["HF_TOKEN"]
         vectorstore = get_vectorstore()
 
         if vectorstore is None:
@@ -151,7 +151,7 @@ def main():
         st.session_state.messages.append({'role': 'user', 'content': prompt})
 
         HF_TOKEN = os.environ.get("HF_TOKEN")
-        HF_TOKEN = st.secrets["HF_TOKEN"]
+        # HF_TOKEN = st.secrets["HF_TOKEN"]
         vectorstore = get_vectorstore()
 
         if vectorstore is None:
